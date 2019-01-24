@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="row content-border">
+  <div class="col-md-3 offset-md-1  category-block">
+    <h2 class="dark-h">Categories</h2>
+    {% for category in categories %}
+      {% if category.id == category_id %}
+        <h4>
+          {{category.title}}
+        </h4>
+      {% else %}
+        <a href="{{url_for('showCategory', category_id=category.id)}}"><h4>{{category.title}}</h4></a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="col-md-7 items-block">
+    <h2 class="dark-h">{{categoryName}} Items</h2>
+    {% if login %}
+    <p>
+      <a href="#">Add new Item</a>
+    </p>
+    {% endif %}
+    {% for item in categoryItems %}
+    <a href="{{url_for('showItem', category_id=item.category_id, item_id=item.id)}}"><h4>{{item.title}}</h4></a>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+
+<!--
+
+{{url_for('showItem', category_id=i.category_id,
+        item_id=i.id)}}
+ -->

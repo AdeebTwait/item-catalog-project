@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="row content-border">
+
+  <form action='{{url_for('newItem')}}' method='POST'>
+    <table>
+      <tr>
+        <td class="label">
+          Name
+        </td>
+        <td class="content">
+          <input type="text" name="name" />
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          Description
+        </td>
+        <td class="content">
+          <input class="description" name="description">
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          Category
+        </td>
+        <td class="content">
+          <select name="category_id">
+            {% for i in categories %}
+            <option value="{{i.id}}">{{i.name}}</option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+    </table>
+    <a class="btn btn-primary" href="{{ url_for('index')}}">
+    Cancel
+    </a>
+    <input class="btn btn-primary" type="submit" value="Add"/>
+  </form>
+</div>
+{% endblock %}
