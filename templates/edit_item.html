@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="row content-border">
+  <div class="col-md-6 offset-md-3 items-block">
+    <h2 class="dark-h">Edit Item</h2>
+    <hr>
+    <form action='{{url_for('editItem', category_id=item.category_id,
+  item_id=item.id)}}' method='POST'>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Name: </label>
+        <input type="text" name="title" class="form-control" id="formGroupExampleInput" value="{{item.title}}">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description: </label>
+        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{item.description}}</textarea>
+      </div>
+
+        <select name="category_id" class="custom-select">
+          <option selected>Select the category</option>
+          {% for cat in categories %}
+              {% if cat.id == item.category_id %}
+                <option selected="true" value="{{cat.id}}">{{cat.title}}</option>
+              {% else %}
+                <option value="{{cat.id}}">{{cat.title}}</option>
+              {% endif %}
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <a class="btn btn-primary" href="{{ url_for('showItem', category_id=item.category_id,
+                                                                        item_id=item.id)}}">
+        Cancel
+        </a>
+        <input class="btn btn-primary" type="submit" value="Edit"/>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

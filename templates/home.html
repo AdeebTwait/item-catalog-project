@@ -6,7 +6,7 @@
   <div class="col-md-3 offset-md-1  category-block">
     <h2 class="dark-h">Categories</h2>
     {% for category in categories %}
-      <a href="{{url_for('showCategory', category_id=category.id)}}"><h4>{{category.title}}</h4></a>
+      <a   href="{{url_for('showCategory', category_id=category.id)}}"><h4>{{category.title}}</h4></a>
     {% endfor %}
   </div>
   <div class="col-md-7 items-block">
@@ -17,7 +17,8 @@
     </p>
     {% endif %}
     {% for item in recent_items %}
-    <a href="{{url_for('showItem', category_id=item.category_id, item_id=item.id)}}"><h4>{{item.title}}</h4></a> <span class="text-warning">({{item.category.title}})</span>
+    <a href="{{url_for('showItem', category_id=item.category_id, item_id=item.id)}}"><h4 style="display:inline">{{item.title}}</h4></a> <span class="text-warning">({{item.category.title}})</span>
+    <br>
     {% endfor %}
   </div>
 </div>

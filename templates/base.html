@@ -19,6 +19,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+
              {% if login %}
             <li class="nav-item">
               <a class="nav-link" href="/disconnect">
@@ -38,11 +39,24 @@
         </div>
       </div>
     </nav>
-      <hr>
-      <br>
+    <hr>
+    <br>
 
-          {% block content %}
-          {% endblock %}
+    <div class="container-fluid">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash container-fluid">
+          <ul>
+            {% for message in messages %}
+              <li><strong>{{message}}</strong></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      {% endwith %}
+
+    {% block content %}
+    {% endblock %}
 
 
     </div>

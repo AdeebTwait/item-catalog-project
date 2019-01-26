@@ -21,20 +21,14 @@
     <h2 class="dark-h">{{categoryName}} Items</h2>
     {% if login %}
     <p>
-      <a href="#">Add new Item</a>
+      <a href="{{url_for('newItem')}}">Add new Item</a>
     </p>
     {% endif %}
     {% for item in categoryItems %}
-    <a href="{{url_for('showItem', category_id=item.category_id, item_id=item.id)}}"><h4>{{item.title}}</h4></a>
+    <a   href="{{url_for('showItem', category_id=item.category_id, item_id=item.id)}}"><h4>{{item.title}}</h4></a>
     {% endfor %}
   </div>
 </div>
 
 {% endblock %}
 
-
-<!--
-
-{{url_for('showItem', category_id=i.category_id,
-        item_id=i.id)}}
- -->

@@ -19,24 +19,32 @@ DBSession = sessionmaker(bind=engine)
 # session.rollback()
 session = DBSession()
 
-user1 = User(name="adeeb", email="adeebtwait@gmail.com", picture="https://via.placeholder.com/300/09f/fff.png")
+user1 = User(name="adeeb",
+             email="adeebtwait@gmail.com",
+             picture="https://via.placeholder.com/300/09f/fff.png")
 session.add(user1)
 session.commit()
 
-category1 = Category(title="Sport",user=user1)
+category1 = Category(title="Basketball", user=user1)
 session.add(category1)
 session.commit()
 
-item1 = Item(title="bla",description="test test test test test test test test test test test test",category=category1,user=user1)
+category2 = Category(title="Soccer", user=user1)
+session.add(category2)
+session.commit()
+
+category3 = Category(title="Snowboarding", user=user1)
+session.add(category3)
+session.commit()
+
+category4 = Category(title="Football", user=user1)
+session.add(category4)
+session.commit()
+
+item1 = Item(title="Goggles", description="lorem ipsum",
+             category=category3, user=user1)
 session.add(item1)
 session.commit()
 
-item2 = Item(title="foo",description="test test test test test test test test test test test test",category=category1,user=user1)
-session.add(item2)
-session.commit()
-
-item3 = Item(title="bar",description="test test test test test test test test test test test test",category=category1,user=user1)
-session.add(item3)
-session.commit()
 
 print "added menu items!"
