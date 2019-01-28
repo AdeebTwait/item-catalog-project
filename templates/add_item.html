@@ -10,16 +10,16 @@
     <form action='{{url_for('newItem')}}' method='POST'>
       <div class="form-group">
         <label for="formGroupExampleInput">Name: </label>
-        <input type="text" name="title" class="form-control" id="formGroupExampleInput" placeholder="Enter the item name">
+        <input type="text" name="title" class="form-control" id="formGroupExampleInput" placeholder="Enter the item name" required >
       </div>
 
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Description: </label>
-        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" required ></textarea>
       </div>
 
+        <label for="formGroupExampleInput">Category: </label>
         <select name="category_id" class="custom-select">
-          <option selected>Select the category</option>
           {% for cat in categories %}
                 <option value="{{cat.id}}">{{cat.title}}</option>
           {% endfor %}>
